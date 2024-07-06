@@ -69,4 +69,8 @@ INSERT INTO TESTE VALUES (1, 'SILVIA'),
                                     (4, 'JOAO'),
                                         (5, 'JOAO'),
                                             (6, 'JOAO'),
-                                                (7, 'JOAO'),
+                                                (7, 'JOAO');
+
+SELECT * FROM TESTE ORDER BY 1;
+
+DELETE FROM TESTE WHERE ID NOT IN (SELECT MIN(ID) FROM TESTE GROUP BY NOME);
