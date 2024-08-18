@@ -1,0 +1,25 @@
+https://www.postgresql.org/docs/current/sql-grant.html
+
+su - postgres
+
+psql
+
+CREATE ROLE admin LOGIN PASSWORD '123456';
+CREATE DATABASE meudb_admin WITH owner = admin;
+\c meudb_admin;
+CREATE SCHEMA meu_esquema;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
+GRANT SELECT, REFERENCES, TRIGGER ON ALL TABLES IN SCHEMA meu_esquema TO PUBLIC;
+GRANT SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA meu_esquema TO PUBLIC;
+GRANT USAGE ON SCHEMA meu_esquema TO PUBLIC;
+
+https://www.postgresql.org/docs/current/sql-revoke.html
+
+REVOKE EXECUTE ON ALL FUNCTIONS IN SCHEMA meu_esquema FROM PUBLIC;
+GRANT USAGE ON SCHEMA meu_esquema TO PUBLIC;
+ALTER DEFAULT PRIVILEGES IN SCHEMA meu_esquema GRANT SELECT, REFERENCES ON TABLES TO PUBLIC;
+ALTER DEFAULT PRIVILEGES IN SCHEMA meu_esquema GRANT ALL ON TABLES TO vitor WITH GRANT OPTION;
+ALTER DEFAULT PRIVILEGES IN SCHEMA meu_esquema GRANT SELECT, UPDATE ON SEQUENCES TO public;
+ALTER DEFAULT PRIVILEGES IN SCHEMA meu_esquema GRANT ALL ON FUNCTIONS TO vitor WITH GRANT OPTION;
+
+https://www.postgresql.org/docs/current/sql-alterdefaultprivileges.html
