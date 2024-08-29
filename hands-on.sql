@@ -82,3 +82,29 @@ CREATE TABLE super_usuario OF usuario_basico (
 );
 
 ALTER TYPE usuario_basico ADD ATTRIBUTE telefone varchar(10) CASCADE;
+
+CREATE TABLE users (
+	id int GENERATED ALWAYS AS IDENTITY,
+	username text NOT NULL, 
+	gecos text,
+	email text NOT NULL,
+	PRIMARY KEY( id ),
+	UNIQUE ( username )
+);
+
+INSERT INTO users (username,gecos,email) VALUES ('meuusername','meugecos','meuemail');
+
+SELECT * FROM users;
+
+INSERT INTO users (username,gecos,email) VALUES ('vitor','vitor_gecos','vitor_email');
+
+CREATE TABLE categories (
+	id int GENERATED ALWAYS AS IDENTITY,
+	title text, 
+	description text,
+	PRIMARY KEY( id )
+);
+
+INSERT INTO categories (title,description) VALUES ('maça', 'frutas'), ('laranja','frutas'),('alface','vegetal');
+
+SELECT * FROM categories;
