@@ -108,3 +108,7 @@ CREATE TABLE categories (
 INSERT INTO categories (title,description) VALUES ('maça', 'frutas'), ('laranja','frutas'),('alface','vegetal');
 
 SELECT * FROM categories;
+
+INSERT INTO categories (title) VALUES ('limão');
+
+INSERT INTO categories (title,description) VALUES ('damasco ','frutas');
