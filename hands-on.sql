@@ -112,3 +112,23 @@ SELECT * FROM categories;
 INSERT INTO categories (title) VALUES ('limão');
 
 INSERT INTO categories (title,description) VALUES ('damasco ','frutas');
+
+CREATE TEMP TABLE temp_categories AS SELECT * FROM categories;
+
+SELECT * FROM temp_categories;
+
+UPDATE temp_categories SET title='pêssego' WHERE id = 4;
+
+UPDATE temp_categories SET title = 'no title' WHERE description = 'vegetal';
+
+SELECT * FROM temp_categories ORDER BY description;
+
+DELETE FROM temp_categories WHERE id=1;
+
+DELETE FROM temp_categories WHERE description IS NULL;
+
+DELETE FROM temp_categories;
+
+INSERT INTO temp_categories SELECT * FROM categories;
+
+TRUNCATE TABLE temp_categories;
