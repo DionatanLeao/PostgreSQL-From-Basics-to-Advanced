@@ -1,0 +1,15 @@
+create temp table temp_categories as select * from categories;
+select * from temp_categories;
+update temp_categories set title='pêssego' where id = 1;
+select * from temp_categories where id=1;
+update temp_categories set title = 'no title' where description = 'vegetal';
+select * from temp_categories order by description;
+delete from temp_categories where id=1;
+select * from temp_categories order by description;
+delete from temp_categories where description is null;
+delete from temp_categories;
+select * from temp_categories order by description;
+insert into temp_categories select * from categories;
+select * from temp_categories order by description;
+truncate table temp_categories;
+select * from temp_categories order by description;
